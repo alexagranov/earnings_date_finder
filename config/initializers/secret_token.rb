@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-EarningsDateFinder::Application.config.secret_token = '285c5772878f47caafd0add4d300a71ac2db02810d40bbe3cbcc79721c774639339860616257e3b316815ca4ba1de6033bdbc8b370f772a71c7f78525e183944'
+EarningsDateFinder::Application.config.secret_token = '6c6c7740477bc914d92444a7429542ad34a7b7634eca6907e9f0d2f0de30f42457f081976bb6b80a5270da2f7135fcd514216e65b69133b853bbc4d83663f0d9'
