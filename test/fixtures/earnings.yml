@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  symbol: MyString
+  eestimate: 1.5
+  time: MyString
+
+two:
+  name: MyString
+  symbol: MyString
+  eestimate: 1.5
+  time: MyString

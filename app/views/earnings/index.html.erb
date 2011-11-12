@@ -1,0 +1,21 @@
+<h1>Listing earnings</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @earnings.each do |earning| %>
+  <tr>
+    <td><%= link_to 'Show', earning %></td>
+    <td><%= link_to 'Edit', edit_earning_path(earning) %></td>
+    <td><%= link_to 'Destroy', earning, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Earning', new_earning_path %>

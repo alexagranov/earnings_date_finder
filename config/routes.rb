@@ -1,4 +1,6 @@
 EarningsDateFinder::Application.routes.draw do
+  resources :earnings
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
