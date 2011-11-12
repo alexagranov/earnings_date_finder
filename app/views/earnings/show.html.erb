@@ -1,5 +1,25 @@
 <p id="notice"><%= notice %></p>
 
+<p>
+  <b>Name:</b>
+  <%= @earning.name %>
+</p>
+
+<p>
+  <b>Cusip:</b>
+  <%= @earning.cusip %>
+</p>
+
+<p>
+  <b>Estimate:</b>
+  <%= @earning.estimate %>
+</p>
+
+<p>
+  <b>At time:</b>
+  <%= @earning.at_time %>
+</p>
+
 
 <%= link_to 'Edit', edit_earning_path(@earning) %> |
 <%= link_to 'Back', earnings_path %>

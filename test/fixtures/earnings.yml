@@ -2,12 +2,12 @@
 
 one:
   name: MyString
-  symbol: MyString
-  eestimate: 1.5
-  time: MyString
+  cusip: MyString
+  estimate: 1.5
+  at_time: MyString
 
 two:
   name: MyString
-  symbol: MyString
-  eestimate: 1.5
-  time: MyString
+  cusip: MyString
+  estimate: 1.5
+  at_time: MyString

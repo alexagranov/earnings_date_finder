@@ -11,9 +11,22 @@
     </div>
   <% end %>
 
-  <%= f.label :name, 'Company Name' %>:
-  <%= f.text_field :name %>
-
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :cusip %><br />
+    <%= f.text_field :cusip %>
+  </div>
+  <div class="field">
+    <%= f.label :estimate %><br />
+    <%= f.text_field :estimate %>
+  </div>
+  <div class="field">
+    <%= f.label :at_time %><br />
+    <%= f.text_field :at_time %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

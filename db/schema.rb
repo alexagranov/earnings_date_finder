@@ -11,13 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111112062317) do
+ActiveRecord::Schema.define(:version => 20111112075728) do
 
   create_table "earnings", :force => true do |t|
     t.string   "name"
-    t.string   "symbol"
+    t.string   "cusip"
     t.float    "estimate"
-    t.string   "time"
+    t.string   "at_time"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
