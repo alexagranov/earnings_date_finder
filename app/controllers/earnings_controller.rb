@@ -1,3 +1,5 @@
+require 'open-uri'
+
 class EarningsController < ApplicationController
   # GET /earnings
   # GET /earnings.xml
@@ -51,6 +53,21 @@ class EarningsController < ApplicationController
         format.xml  { render :xml => @earning.errors, :status => :unprocessable_entity }
       end
     end
+  end
+
+  # POST /import
+  def import
+    # load page...
+    page = Nokogiri::HTML(open('http://biz.yahoo.com/research/earncal/20111117.html'))
+    # find all tables...
+    tables = page.xpath("//table")
+    # the 6th table is the one we want...
+    table_node = tables[6]
+    # all the rows we want...
+    table_node.children[2..table_node.children.length-2].each do |row|
+
+    end
+
   end
 
   # PUT /earnings/1

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111112075728) do
+ActiveRecord::Schema.define(:version => 20111117060051) do
 
   create_table "earnings", :force => true do |t|
     t.string   "name"
@@ -20,6 +20,9 @@ ActiveRecord::Schema.define(:version => 20111112075728) do
     t.string   "at_time"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "released_at"
   end
+
+  add_index "earnings", ["cusip", "released_at"], :name => "uniq_by_cusip_and_released", :unique => true
 
 end

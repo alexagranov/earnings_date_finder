@@ -18,7 +18,7 @@ gem 'ruby-debug19', :require => 'ruby-debug'
 # Bundle the extra gems:
 # gem 'bj'
 # gem 'aws-s3', :require => 'aws/s3'
-gem 'mechanize'
+# gem 'mechanize'
 gem 'nokogiri'
 
 # Bundle gems for the local environment. Make sure to
