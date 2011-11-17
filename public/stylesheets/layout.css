@@ -1,0 +1,7 @@
+.centered {
+    text-align: center;
+}
+
+tr.header-row th {
+    padding: 5px 10px;
+}

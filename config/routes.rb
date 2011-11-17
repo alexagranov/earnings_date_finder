@@ -1,6 +1,6 @@
 EarningsDateFinder::Application.routes.draw do
   resources :earnings
-  match "import" => "earnings#import", :as => "earnings_import", :via => [:post]
+  match "import" => "earnings#import", :as => "import_earnings", :via => [:post]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

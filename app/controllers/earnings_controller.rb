@@ -64,10 +64,20 @@ class EarningsController < ApplicationController
     # the 6th table is the one we want...
     table_node = tables[6]
     # all the rows we want...
-    table_node.children[2..table_node.children.length-2].each do |row|
-
+    table_node.children[2..table_node.children.length-2].each do |stock|
+      values = stock.children
+      begin
+        earning = Earning.new(:name => values[0].text,
+                              :cusip => values[1].text,
+                              :released_at => "2011-11-17",
+                              :at_time => values[3].text
+                              )
+        earning.save!
+      rescue Exception => e
+      end
     end
 
+    redirect_to :action => "index"
   end
 
   # PUT /earnings/1
