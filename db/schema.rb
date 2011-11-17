@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(:version => 20111117065438) do
     t.datetime "released_at"
   end
 
-  add_index "earnings", ["cusip", "released_at"], :name => "uniq_by_cusip_and_released", :unique => true
+  add_index "earnings", ["name", "released_at"], :name => "uniq_by_name_and_released", :unique => true
   add_index "earnings", ["name"], :name => "by_name"
 
 end

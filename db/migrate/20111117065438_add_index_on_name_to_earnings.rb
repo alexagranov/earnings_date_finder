@@ -4,6 +4,6 @@ class AddIndexOnNameToEarnings < ActiveRecord::Migration
   end
 
   def self.down
-    add_index :earnings, :name => 'by_name'
+    remove_index :earnings, :name => 'by_name'
   end
 end
