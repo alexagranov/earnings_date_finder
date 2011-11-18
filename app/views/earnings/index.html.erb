@@ -1,4 +1,17 @@
+<%= content_for :ready do %>
+    $(function() {
+      $("#from_date").datepicker();
+      $("#to_date").datepicker();
+    });
+<% end %>
+
 <h1>Listing earnings</h1>
+
+<%= form_tag(import_earnings_path, :confirm=> 'Are you sure you would like to import earnings?') do %>
+  <%= text_field_tag 'from_date', nil, :placeholder => 'From Date', :id => 'from_date' %>
+  <%= text_field_tag 'to_date', nil, :placeholder => 'To Date', :id => 'to_date' %>
+  <div><%= submit_tag 'Import' %></div>
+<% end %>
 
 <table>
   <tr class='header-row'>
@@ -28,6 +41,5 @@
 
 <br />
 
-<%= link_to 'New Earning', new_earning_path %>
+<%#= link_to 'New Earning', new_earning_path %>
 
-<%= link_to 'Import', import_earnings_path, :method => :post, :confirm=> 'Are you sure you would like to import earnings?' %>
