@@ -1,7 +1,7 @@
 <%= content_for :ready do %>
     $(function() {
-      $("#from_date").datepicker();
-      $("#to_date").datepicker();
+      $("#from_date").datepicker({ dateFormat: 'yy-mm-dd' });
+      $("#to_date").datepicker({ dateFormat: 'yy-mm-dd' });
     });
 <% end %>
 
@@ -32,9 +32,9 @@
     <td class='centered'><%= earning.released_at.strftime('%m-%d-%Y') %></td>
     <td><%= earning.estimate %></td>
     <td class='centered'><%= earning.at_time %></td>
-    <td><%= link_to 'Show', earning %></td>
-    <td><%= link_to 'Edit', edit_earning_path(earning) %></td>
-    <td><%= link_to 'Destroy', earning, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%#= link_to 'Show', earning %></td>
+    <td><%#= link_to 'Edit', edit_earning_path(earning) %></td>
+    <td><%#= link_to 'Destroy', earning, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

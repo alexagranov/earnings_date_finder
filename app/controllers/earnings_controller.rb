@@ -4,7 +4,7 @@ class EarningsController < ApplicationController
   # GET /earnings
   # GET /earnings.xml
   def index
-    @earnings = Earning.all
+    @earnings = Earning.find(:all, :order => "released_at DESC, name ASC")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -57,24 +57,39 @@ class EarningsController < ApplicationController
 
   # POST /import
   def import
-    # load page...
-    page = Nokogiri::HTML(open('http://biz.yahoo.com/research/earncal/20111117.html'))
-    # find all tables...
-    tables = page.xpath("//table")
-    # the 6th table is the one we want...
-    table_node = tables[6]
-    # all the rows we want...
-    table_node.children[2..table_node.children.length-2].each do |stock|
-      values = stock.children
-      begin
-        earning = Earning.new(:name => values[0].text,
-                              :cusip => values[1].text,
-                              :released_at => "2011-11-17",
-                              :at_time => values[3].text
-                              )
-        earning.save!
-      rescue Exception => e
+    from_args = params[:from_date].split('-')
+    from_date = Time.local(from_args[0], from_args[1], from_args[2])
+
+    to_args = params[:to_date].split('-')
+    to_date = Time.local(to_args[0], to_args[1], to_args[2])
+
+    while from_date <= to_date
+      if from_date.weekday?
+        begin
+          # load page...
+          page = Nokogiri::HTML(open("http://biz.yahoo.com/research/earncal/#{from_date.strftime('%Y%m%d')}.html"))
+          # find all tables...
+          tables = page.xpath("//table")
+          # the 6th table is the one we want...
+          table_node = tables[6]
+          # all the rows we want...
+          table_node.children[2..table_node.children.length-2].each do |stock|
+            values = stock.children
+            earning = Earning.new(:name => values[0].text,
+                                  :cusip => values[1].text,
+                                  :released_at => from_date,
+                                  :at_time => values[3].text
+                                  )
+            earning.save!
+          end
+        rescue Exception => e
+        end
       end
+      # sleep for a bit to not overwhelm their servers...
+      sleep 3 unless from_date == to_date
+
+      # iterate and break the loop once we're past to_date...
+      from_date = from_date + 1.day
     end
 
     redirect_to :action => "index"
@@ -106,5 +121,11 @@ class EarningsController < ApplicationController
       format.html { redirect_to(earnings_url) }
       format.xml  { head :ok }
     end
+  end
+end
+
+class Time
+  def weekday?
+    self.wday != 0 and self.wday != 6
   end
 end
